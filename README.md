@@ -1,6 +1,6 @@
-# 🧠 MiniVault API
+# MiniVault API
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 1. **Clone the Repository**
 
@@ -96,3 +96,21 @@ This script allows quick terminal-based interaction.
     "response": "Stubbed sample response to: Tell me a joke"
   }
   ```
+
+## Design Choices
+
+1. **Using GPT-2 with Local Cache**  
+   Using Hugging Face to load and cache GPT-2 locally.
+
+2. **Modularizing Model Loading into `model_loader.py`**  
+   The model loading logic is separated into its own module to keep route handlers clean and maintainable. This improves testability and sets the foundation for future extensibility.
+
+3. **Streaming Responses with `StreamingResponse`**  
+   The `/generate/stream` endpoint streams generated tokens in real time, providing a more interactive, responsive experience for the user.
+
+---
+
+## 🔮 Future Improvements
+
+- **Supporting Multiple Models**  
+  Extend the `model_loader.py` to load different models dynamically based on configuration or request parameters. This enables experimentation and broader use cases (e.g., GPT-2, TinyLlama, Mistral).
